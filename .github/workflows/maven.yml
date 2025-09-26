@@ -29,12 +29,17 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: unittests maven
-      run: mvn test
-    - name: check files
-      run: ls -alh; ls -alh ./target/surefire-reports
+      run: mvn test ; mvn clean package
     - name: Test Report
       uses: dorny/test-reporter@v2
       with:
           name: JUnit Tests           
           path: target/surefire-reports/TEST-*.xml    #
           reporter: java-junit 
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: dist-without-markdown
+        path: |
+           target/*.jar
+          
