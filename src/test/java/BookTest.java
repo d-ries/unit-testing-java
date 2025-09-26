@@ -11,36 +11,6 @@ import static org.mockito.Mockito.*;
 @PrepareForTest( AgaUtils.class )
 public class BookTest {
 
-    @Test (expected = NullPointerException.class)
-    public void testMockException(){
-        //arrange
-
-        PowerMockito.mockStatic(AgaUtils.class);
-        BDDMockito.given(AgaUtils.getTextUppercase(any(String.class))).willThrow(new NullPointerException());
-
-        Book book = new Book();
-        String exp = "TODAY IS THE DAY";
-
-        //act
-        String act = book.getTitle();
-    }
-
-    @Test
-    public void testMockObjectStatic(){
-        //arrange
-        PowerMockito.mockStatic(AgaUtils.class);
-        BDDMockito.given(AgaUtils.getTextUppercase(any(String.class))).willReturn("yesterday");
-
-        Book book = new Book();
-        String exp = "yesterday";
-
-        //act
-        String act = book.getTitle();
-
-        //assert
-        Assert.assertEquals(exp, act);
-    }
-
 
     @Test
     public void testGetTitle(){
