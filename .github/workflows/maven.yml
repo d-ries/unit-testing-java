@@ -32,3 +32,9 @@ jobs:
       run: mvn test
     - name: check files
       run: ls -alh; ls -alh ./target/surefire-reports
+    - name: Test Report
+      uses: dorny/test-reporter@v2
+      with:
+          name: JUnit Tests           
+          path: target/surefire-reports/TEST-*.xml    #
+          reporter: java-junit 
