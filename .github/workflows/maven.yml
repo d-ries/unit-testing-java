@@ -31,4 +31,4 @@ jobs:
     - name: unittests maven
       run: mvn test
     - name: check files
-      run: ls -alh
+      run: ls -alh; ls -alh ./target
